@@ -15,3 +15,9 @@ require "#{path}/models/bat"
 require "#{path}/models/player"
 
 DataMapper.finalize
+
+
+
+# load libs
+require "#{path}/lib/loader"
+
