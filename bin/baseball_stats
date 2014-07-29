@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby -wU
+
+require_relative "../lib/ui_cli"
+
+ui = BaseballStats::UI.new ARGV
+ui.run

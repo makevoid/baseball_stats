@@ -7,7 +7,7 @@ class Bat
   property :league,       String
   property :team_id,      String,  index: true
   # property :g,            Integer # ?
-  property :at_bats,      Integer
+  property :at_bats,      Integer, index: true
   # property :r,            Integer # ?
   property :hits,         Integer
   property :doubles,      Integer
