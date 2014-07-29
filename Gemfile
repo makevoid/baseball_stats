@@ -1,3 +1,5 @@
+source "http://rubygems.org"
+
 gem "dm-core"
 gem "dm-sqlite-adapter"
 # gem "dm-mysql-adapter" # or postgres-adapter, for the final version

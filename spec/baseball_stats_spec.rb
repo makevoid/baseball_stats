@@ -1,3 +1,5 @@
+require "spec_helper"
+
 describe BaseballStats do
   
   before :all do
