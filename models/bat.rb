@@ -2,7 +2,7 @@ class Bat
   include DataMapper::Resource
   
   property :id,           Serial
-  property :player_id,    Integer, index: true
+  # property :player_id,    Integer, index: true
   property :year,         Integer, index: true
   property :league,       String
   property :team_id,      String,  index: true
@@ -17,12 +17,11 @@ class Bat
   # property :sb,           Integer # ?
   # property :cs,           Integer # ?
   
-  
   # computed properties
-  
   property :batting_average,     Integer
   property :slugging_percentage, Float
   
+  belongs_to :player
   
   before :create do
     self.batting_average      = calc_batting_average
@@ -33,10 +32,12 @@ class Bat
   # formulas
   
   def calc_batting_average
+    return 0 if at_bats == 0
     hits / at_bats
   end
   
   def calc_slugging_percentage
+    return 0 if at_bats == 0
     (hits - doubles - triples - home_runs + 2 * doubles + 3 * triples + 4 * home_runs).to_f / at_bats
   end
   
