@@ -1,4 +1,5 @@
 ENV["app_env"] = "test"
+
 require_relative "../config/env"
 require "#{PATH}/baseball_stats"
 

@@ -6,13 +6,16 @@ Bundler.require :default
 path = File.expand_path "../../", __FILE__
 PATH = path
 
+class BaseballStats
+end
+
 
 # setup datamapper
 environment = ENV["app_env"] || "development"
 DataMapper.setup :default, "sqlite://#{path}/db/baseball_stats_#{environment}.sqlite"
 
-require "#{path}/models/bat"
 require "#{path}/models/player"
+require "#{path}/models/bat"
 
 DataMapper.finalize
 

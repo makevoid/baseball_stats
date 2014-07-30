@@ -1,5 +1,10 @@
 require 'csv'
 
+# monkeypatch
+CSV::Converters[:nil_to_zero] = lambda{|s| 
+  s.nil? ? 0 : s
+}
+
 class BaseballStats
   class PlayerNotFound < RuntimeError
     def initialize(bat)
@@ -16,7 +21,6 @@ class BaseballStats
     end
     
     def initialize
-      
     end
     
     def import_data
@@ -30,7 +34,9 @@ class BaseballStats
     private
     
     def read(name)
-      CSV.read("#{PATH}/db/test/#{name}.csv", headers: true, header_converters: :symbol )
+      path = ""
+      path = "/test" if ENV["app_env"] == "test"
+      CSV.read("#{PATH}/db#{path}/#{name}.csv", headers: true, header_converters: [:symbol], converters: [:nil_to_zero])
     end
     
     def import_players(players)
@@ -45,7 +51,6 @@ class BaseballStats
         bat = bat.to_hash
         filter.map{ |arg| bat.delete arg  } 
         player = find_player bat
-        # puts "Can't import"
         raise PlayerNotFound.new(bat) unless player
         bat.delete :player_id
         player.bats.create bat

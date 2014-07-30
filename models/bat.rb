@@ -1,3 +1,5 @@
+# note: this should be named Batting
+
 class Bat
   include DataMapper::Resource
   
@@ -18,7 +20,7 @@ class Bat
   # property :cs,           Integer # ?
   
   # computed properties
-  property :batting_average,     Integer
+  property :batting_average,     Float
   property :slugging_percentage, Float
   
   belongs_to :player
@@ -33,12 +35,12 @@ class Bat
   
   def calc_batting_average
     return 0 if at_bats == 0
-    hits / at_bats
+    (hits.to_f / at_bats).round(4)
   end
   
   def calc_slugging_percentage
     return 0 if at_bats == 0
-    (hits - doubles - triples - home_runs + 2 * doubles + 3 * triples + 4 * home_runs).to_f / at_bats
+    ((hits - doubles - triples - home_runs + 2 * doubles + 3 * triples + 4 * home_runs).to_f / at_bats).round(4)
   end
   
   

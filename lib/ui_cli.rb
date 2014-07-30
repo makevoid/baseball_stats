@@ -1,6 +1,7 @@
 # I think the ui part is not critical so I will sketch it, a JSON API will be a better substitute of this, it's not even checking the parameters
 
-require_relative "../baseball_stats"
+require_relative "../config/env"
+require "#{PATH}/baseball_stats"
 
 class BaseballStats
   class UI
@@ -18,16 +19,48 @@ class BaseballStats
 
       case action
         when :batting_average
-          stats.batting_average     arg1..arg2
+          display_batting_average     stats.batting_average     arg1..arg2
         when :slugging_percentage
-          stats.slugging_percentage arg1.to_sym, arg2
+          display_slugging_percentage stats.slugging_percentage arg1.to_sym, arg2
         when :triple_crown_winner
-          stats.triple_crown_winner arg1
+          display_triple_crown_winner stats.triple_crown_winner arg1
       end
-
+      
     end
     
     private
+    
+    # display methods (views)
+    
+    def display_batting_average(results)
+      results.each do |result|
+        player = player_get result.id
+        output << [player.full_name, result.batting_average].join("\t\t") + "\n"
+      end
+    end
+    
+    def slugging_percentage(results)
+      results.each do |result|
+        player = player_get result.id
+        output << [player.full_name, result.batting_average].join("\t\t") + "\n"
+      end
+    end
+    
+    def triple_crown_winner(results)
+      
+    end
+    
+    # player
+    
+    def player_get(bat_id)
+      Bat.get(bat_id).player(fields: [:first_name, :last_name])
+    end
+    
+    # main
+    
+    def output
+      $stdout
+    end
     
     def action
       @args[0].to_sym

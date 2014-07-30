@@ -8,4 +8,8 @@ class Player
   property :player_id,  String, index: true
   
   has n, :bats
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

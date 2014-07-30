@@ -9,17 +9,15 @@ class BaseballStats
   # main methods
   
   def batting_average(year_range)
-    Bat.all(:at_bats.gte => 200, :year.gte => year_range.min, :year.lte => year_range.max, limit: LIMIT, fields: [:batting_average])
-      .map{ |bat| bat.batting_average }
+    Bat.all(:at_bats.gte => 200, :year.gte => year_range.min, :year.lte => year_range.max, limit: LIMIT, fields: [:id, :batting_average], order: :batting_average.desc)
   end
   
   def slugging_percentage(team, year)
-    Bat.all(team_id: team, year: year, limit: LIMIT, fields: [:slugging_percentage])
-      .map{ |bat| bat.slugging_percentage }
+    Bat.all(team_id: team, year: year, limit: LIMIT, fields: [:id, :slugging_percentage])
   end  
   
   def triple_crown_winner(year)
-    
+    # TODO: implement
   end
   
   
@@ -28,9 +26,7 @@ class BaseballStats
   # this is a generic formula, it doesn't belongs here, TODO: move
   
   def triple_crown_winner_formula
-    
+    # TODO: implement
   end
-  
-  
   
 end
