@@ -18,4 +18,8 @@ describe Bat do
       bat.slugging_percentage.should == 2.5
     end
   end
+  
+  after :all do
+    DataMapper.auto_migrate!
+  end
 end

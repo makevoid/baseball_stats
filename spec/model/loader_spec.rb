@@ -6,4 +6,8 @@ describe BaseballStats::Loader do
     Player.count.should == 3
     Bat.count.should == 2
   end
+  
+  after :all do
+    DataMapper.auto_migrate!
+  end
 end

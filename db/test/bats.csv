@@ -1,3 +1,3 @@
 player_id,year,league,team_id,g,at_bats,r,hits,doubles,triples,home_runs,runs_batted,sb,cs
-aardsda01,2010,AL,SEA,53,0,0,0,0,0,0,0,0,0
-aardsda01,2009,AL,SEA,73,0,0,0,0,0,0,0,0,0
+aardsda01,2010,AL,SEA,53,201,0,8,1,1,1,0,0,0,0
+aardsda01,2009,AL,SEA,73,4,0,8,1,1,1,0,0,0,0

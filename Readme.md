@@ -45,6 +45,3 @@ Please note specs and other parts are not 100% complete and are there just to sh
 
 **Important:** All the queries are limited to 50 results
 to edit the hardcoded limit go into baseball_stats.rb, BaseballStats class and edit the LIMIT constant
-
-I throwed two tabs in the output
-Players with long name will cause the alignment to misalign

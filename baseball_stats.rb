@@ -9,7 +9,7 @@ class BaseballStats
   # main methods
   
   def batting_average(year_range)
-    Bat.all(:at_bats.gte => 200, :year.gte => year_range.min, :year.lte => year_range.max, limit: LIMIT, fields: [:id, :batting_average], order: :batting_average.desc)
+    Bat.all(:at_bats.gte => 200, :year.gte => year_range.min, :year.lte => year_range.max, limit: LIMIT, fields: [:id, :batting_average, :year], order: :batting_average.desc)
   end
   
   def slugging_percentage(team, year)

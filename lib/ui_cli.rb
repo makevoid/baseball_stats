@@ -35,7 +35,7 @@ class BaseballStats
     def display_batting_average(results)
       results.each do |result|
         player = player_get result.id
-        output << [player.full_name, result.batting_average].join("\t\t") + "\n"
+        output << [player.full_name.ljust(20), result.batting_average, result.year].join("\t") + "\n"
       end
     end
     
@@ -43,7 +43,7 @@ class BaseballStats
       results.each do |result|
         player = player_get result.id
         perc = result.slugging_percentage * 100
-        output << [player.full_name, "#{perc.round(1)}%"].join("\t\t") + "\n"
+        output << [player.full_name.ljust(20), "#{perc.round(1)}%"].join("\t") + "\n"
       end
     end
     
