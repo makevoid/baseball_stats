@@ -39,14 +39,15 @@ class BaseballStats
       end
     end
     
-    def slugging_percentage(results)
+    def display_slugging_percentage(results)
       results.each do |result|
         player = player_get result.id
-        output << [player.full_name, result.batting_average].join("\t\t") + "\n"
+        perc = result.slugging_percentage * 100
+        output << [player.full_name, "#{perc.round(1)}%"].join("\t\t") + "\n"
       end
     end
     
-    def triple_crown_winner(results)
+    def display_triple_crown_winner(results)
       
     end
     

@@ -13,7 +13,7 @@ class BaseballStats
   end
   
   def slugging_percentage(team, year)
-    Bat.all(team_id: team, year: year, limit: LIMIT, fields: [:id, :slugging_percentage])
+    Bat.all(team_id: team, year: year, limit: LIMIT, fields: [:id, :slugging_percentage], order: :slugging_percentage.desc)
   end  
   
   def triple_crown_winner(year)
